@@ -8,7 +8,7 @@ extern "C" {
 #include <stdbool.h>
 
 char *hello(void);
-Field *CreateField(int rows, int columns, char symbol);
+Field *CreateField(int rows, int columns);
 bool IsDimensionValid(int rows, int columns);
 
 #ifdef __cplusplus

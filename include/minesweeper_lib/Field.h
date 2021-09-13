@@ -1,5 +1,5 @@
 typedef struct field{
     int rows;
     int columns;
-    char symbol;
+    char** fieldArray;
 }Field;

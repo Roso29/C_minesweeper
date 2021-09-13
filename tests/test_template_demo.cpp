@@ -35,11 +35,11 @@ TEST_F(FieldTest, test_init_field_structure) {
 }
 
 TEST_F(FieldTest, test_create_field_structure) {
-    Field *fieldPtr = CreateField(4,4,'-');
+    Field *fieldPtr = CreateField(4,4);
 }
 
 TEST_F(FieldTest, test_field_dimensions) {
-    Field *fieldPtr = CreateField(4,5,'-');
+    Field *fieldPtr = CreateField(4,5);
     EXPECT_EQ(fieldPtr->rows, 4);
     EXPECT_EQ(fieldPtr->columns, 5);
 }

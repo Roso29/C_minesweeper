@@ -44,7 +44,32 @@ TEST_F(FieldTest, test_field_dimensions) {
     EXPECT_EQ(fieldPtr->columns, 5);
 }
 
-TEST_F(FieldTest, test_bad_dimensions_given_to_CreateField) {
-    Field *fieldPtr = CreateField(10,102,'-');
-    EXPECT_TRUE(NULL==fieldPtr);
+TEST_F(FieldTest, test_too_many_columns) {
+    bool badDimensions = IsDimensionValid(3,101);
+    EXPECT_FALSE(badDimensions);
+}
+
+TEST_F(FieldTest, test_zero_columns) {
+    bool badDimensions = IsDimensionValid(3,0);
+    EXPECT_FALSE(badDimensions);
+}
+
+TEST_F(FieldTest, test_negative_columns) {
+    bool badDimensions = IsDimensionValid(3,-5);
+    EXPECT_FALSE(badDimensions);
+}
+
+TEST_F(FieldTest, test_too_many_rows) {
+    bool badDimensions = IsDimensionValid(101,3);
+    EXPECT_FALSE(badDimensions);
+}
+
+TEST_F(FieldTest, test_zero_rows) {
+    bool badDimensions = IsDimensionValid(0,3);
+    EXPECT_FALSE(badDimensions);
+}
+
+TEST_F(FieldTest, test_negative_rows) {
+    bool badDimensions = IsDimensionValid(-5,3);
+    EXPECT_FALSE(badDimensions);
 }

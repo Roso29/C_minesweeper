@@ -5,10 +5,11 @@ extern "C" {
 #endif
 
 #include "Field.h"
+#include <stdbool.h>
 
 char *hello(void);
 Field *CreateField(int rows, int columns, char symbol);
-
+bool IsDimensionValid(int rows, int columns);
 
 #ifdef __cplusplus
 }

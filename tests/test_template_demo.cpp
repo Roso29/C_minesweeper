@@ -27,7 +27,7 @@ public:
 };
 
 TEST_F(FieldTest, test_CreateField_function) {
-    CreateField(4,4,'-');
+    CreateField(4,4);
 }
 
 TEST_F(FieldTest, test_init_field_structure) {
@@ -40,6 +40,9 @@ TEST_F(FieldTest, test_create_field_structure) {
 
 TEST_F(FieldTest, test_field_dimensions) {
     Field *fieldPtr = CreateField(4,5);
+    printf("Created field");
+    bool isVal = IsDimensionValid(4,5);
+    printf("Valid? %d",isVal);
     EXPECT_EQ(fieldPtr->rows, 4);
     EXPECT_EQ(fieldPtr->columns, 5);
 }

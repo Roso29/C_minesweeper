@@ -85,6 +85,31 @@ TEST_F(FieldTest, test_enter_row_into_field){
     // AddRowToField(fieldPtr, 2, rowString);
     // strncpy(rowString, "-----",5);
     // AddRowToField(fieldPtr, 3, rowString);
-    int cmp = strncmp(fieldPtr->fieldArray[3], rowString, 5);
+    int cmp = strncmp(fieldPtr->fieldArray[0], rowString, 5);
     EXPECT_EQ(cmp,0);
 }
+
+TEST_F(FieldTest, test_enter_multiple_rows_into_field){
+    Field *fieldPtr = CreateField(4,5);
+    int cmp = 0;
+    char rowString[6] = "-*--*";
+    AddRowToField(fieldPtr, 0, rowString);
+    cmp = strncmp(fieldPtr->fieldArray[0], rowString, 5);
+    EXPECT_EQ(cmp,0);
+    strncpy(rowString, "--*--",5);
+    AddRowToField(fieldPtr, 1, rowString);
+    cmp = strncmp(fieldPtr->fieldArray[1], rowString, 5);
+    EXPECT_EQ(cmp,0);
+    strncpy(rowString, "*---*",5);
+    AddRowToField(fieldPtr, 2, rowString);
+    cmp = strncmp(fieldPtr->fieldArray[2], rowString, 5);
+    EXPECT_EQ(cmp,0);
+    strncpy(rowString, "-----",5);
+    AddRowToField(fieldPtr, 3, rowString);
+    cmp = strncmp(fieldPtr->fieldArray[3], rowString, 5);
+    EXPECT_EQ(cmp,0);
+    
+}
+
+
+

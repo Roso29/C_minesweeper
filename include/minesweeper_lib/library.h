@@ -14,7 +14,8 @@ int AddRowToField(Field* fieldPtr, int rowIndex, char* rowStr);
 void PrintField(Field* fieldPtr);
 bool IsRowDimsValid(Field *fieldPtr, int rowIndex, int rowLength);
 bool IsRowContentValid(char* rowString, int rowLength);
-
+int CalculateFieldHints(Field* fieldPtr);
+int CalculateSurroundingMines(Field* fieldPtr, int rowIndex, int columnIndex);
 
 #ifdef __cplusplus
 }

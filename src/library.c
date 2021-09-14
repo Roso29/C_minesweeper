@@ -31,12 +31,16 @@ Field *CreateField(int rows, int columns) {
 }
 
 int AddRowToField(Field* fieldPtr, int rowIndex, char* rowStr){
-    int rowLength = fieldPtr->columns;
-    //printf("Row: %s\n",rowStr);
+    int rowLength = strlen(rowStr);
+    if (rowLength!=fieldPtr->columns){
+        return 0;
+    }
+    if (rowIndex >= fieldPtr->rows){
+        return 0;
+    }
     char * rowAddr = fieldPtr->fieldArray[rowIndex];
-    //printf("Pointer: %p\n", rowAddr);
     strncpy(rowAddr, rowStr, rowLength);
-    //printf("Row in array: %s\n",fieldPtr->fieldArray[0]);
+    
     return 1;
 }  
 

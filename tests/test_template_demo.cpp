@@ -107,9 +107,30 @@ TEST_F(FieldTest, test_enter_multiple_rows_into_field){
     strncpy(rowString, "-----",5);
     AddRowToField(fieldPtr, 3, rowString);
     cmp = strncmp(fieldPtr->fieldArray[3], rowString, 5);
-    EXPECT_EQ(cmp,0);
-    
+    EXPECT_EQ(cmp,0);    
 }
 
+TEST_F(FieldTest, test_add_row_too_long){
+    Field *fieldPtr = CreateField(4,5);
+    char rowString[10] = "--*---";
+    int success = AddRowToField(fieldPtr, 0, rowString);
+    EXPECT_EQ(success, 0);
+}
+
+TEST_F(FieldTest, test_add_row_too_short){
+    Field *fieldPtr = CreateField(4,5);
+    char rowString[10] = "--*";
+    int success = AddRowToField(fieldPtr, 0, rowString);
+    EXPECT_EQ(success, 0);
+}
+
+TEST_F(FieldTest, test_add_row_at_index_out_of_bounds){
+    int success = 1;
+    Field *fieldPtr = CreateField(4,5);
+    char rowString[10] = "--*--";
+    success = AddRowToField(fieldPtr, 6, rowString);
+
+    EXPECT_EQ(success,0);
+}
 
 

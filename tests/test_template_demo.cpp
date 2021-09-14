@@ -40,9 +40,7 @@ TEST_F(FieldTest, test_create_field_structure) {
 
 TEST_F(FieldTest, test_field_dimensions) {
     Field *fieldPtr = CreateField(4,5);
-    printf("Created field");
     bool isVal = IsDimensionValid(4,5);
-    printf("Valid? %d",isVal);
     EXPECT_EQ(fieldPtr->rows, 4);
     EXPECT_EQ(fieldPtr->columns, 5);
 }
@@ -81,6 +79,12 @@ TEST_F(FieldTest, test_enter_row_into_field){
     Field *fieldPtr = CreateField(4,5);
     char rowString[6] = "-*--*";
     AddRowToField(fieldPtr, 0, rowString);
-    int cmp = strncmp(fieldPtr->fieldArray[0], rowString, 5);
+    // strncpy(rowString, "--*--",5);
+    // AddRowToField(fieldPtr, 1, rowString);
+    // strncpy(rowString, "*---*",5);
+    // AddRowToField(fieldPtr, 2, rowString);
+    // strncpy(rowString, "-----",5);
+    // AddRowToField(fieldPtr, 3, rowString);
+    int cmp = strncmp(fieldPtr->fieldArray[3], rowString, 5);
     EXPECT_EQ(cmp,0);
 }

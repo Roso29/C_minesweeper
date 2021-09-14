@@ -1,5 +1,8 @@
 #include "minesweeper_lib/library.h"
 #include <stddef.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 
 char *hello(void) {
@@ -37,3 +40,13 @@ int AddRowToField(Field* fieldPtr, int rowIndex, char* rowStr){
     return 1;
 }  
 
+void PrintField(Field* fieldPtr){
+    int rows = fieldPtr->rows;
+    int columns = fieldPtr->columns;
+    char** fieldArray = fieldPtr->fieldArray;
+
+    for(int row=0;row < rows; row++){
+        printf("%s\n",fieldArray[row]);
+    }
+
+}

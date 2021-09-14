@@ -132,4 +132,11 @@ TEST_F(FieldTest, test_add_row_at_index_out_of_bounds){
     EXPECT_EQ(success,0);
 }
 
+TEST_F(FieldTest, test_invalid_symbol_used){
+    char rowString[10] = "--*-A";
+    int rowLength = strlen(rowString);
+    int isValidRow = IsRowContentValid(rowString, rowLength);
+    EXPECT_TRUE(!isValidRow);
+}
+
 

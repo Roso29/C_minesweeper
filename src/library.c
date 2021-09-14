@@ -30,15 +30,30 @@ Field *CreateField(int rows, int columns) {
     return fieldPtr;
 }
 
-bool IsRowValid(Field *fieldPtr, int rowIndex, int rowLength){
+bool IsRowDimsValid(Field *fieldPtr, int rowIndex, int rowLength){
     bool isValid = (rowLength==fieldPtr->columns) & (rowIndex < fieldPtr->rows);
     return isValid;
-        
+}
+
+bool IsRowContentValid(char* rowString, int rowLength){
+    bool isGoodCharacter = true;
+    for(int charI = 0; charI<rowLength; charI++){
+        isGoodCharacter = rowString[charI]=='*' || rowString[charI] == '-';
+        if (!isGoodCharacter){
+            return false;
+        }
+    }
+    return true;
+}
+
+bool IsRowValid(Field *fieldPtr, int rowIndex, int rowLength, char* rowString){
+    bool isValid = IsRowDimsValid(fieldPtr, rowIndex, rowLength) && IsRowContentValid(rowString,rowLength);
+    return isValid;
 }
 
 int AddRowToField(Field* fieldPtr, int rowIndex, char* rowStr){
     int rowLength = strlen(rowStr);
-    if (!IsRowValid(fieldPtr, rowIndex, rowLength)){
+    if (!IsRowValid(fieldPtr, rowIndex, rowLength, rowStr)){
         return 0;
     }
     char * rowAddr = fieldPtr->fieldArray[rowIndex];

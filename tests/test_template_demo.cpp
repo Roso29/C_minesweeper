@@ -129,7 +129,6 @@ TEST_F(FieldTest, test_add_row_at_index_out_of_bounds){
     Field *fieldPtr = CreateField(4,5);
     char rowString[10] = "--*--";
     success = AddRowToField(fieldPtr, 6, rowString);
-
     EXPECT_EQ(success,0);
 }
 

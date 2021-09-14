@@ -30,12 +30,15 @@ Field *CreateField(int rows, int columns) {
     return fieldPtr;
 }
 
+bool IsRowValid(Field *fieldPtr, int rowIndex, int rowLength){
+    bool isValid = (rowLength==fieldPtr->columns) & (rowIndex < fieldPtr->rows);
+    return isValid;
+        
+}
+
 int AddRowToField(Field* fieldPtr, int rowIndex, char* rowStr){
     int rowLength = strlen(rowStr);
-    if (rowLength!=fieldPtr->columns){
-        return 0;
-    }
-    if (rowIndex >= fieldPtr->rows){
+    if (!IsRowValid(fieldPtr, rowIndex, rowLength)){
         return 0;
     }
     char * rowAddr = fieldPtr->fieldArray[rowIndex];

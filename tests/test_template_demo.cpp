@@ -76,3 +76,11 @@ TEST_F(FieldTest, test_negative_rows) {
     bool badDimensions = IsDimensionValid(-5,3);
     EXPECT_FALSE(badDimensions);
 }
+
+TEST_F(FieldTest, test_enter_row_into_field){
+    Field *fieldPtr = CreateField(4,5);
+    char rowString[6] = "-*--*";
+    AddRowToField(fieldPtr, 0, rowString);
+    int cmp = strncmp(fieldPtr->fieldArray[0], rowString, 5);
+    EXPECT_EQ(cmp,0);
+}

@@ -10,6 +10,7 @@ extern "C" {
 char *hello(void);
 Field *CreateField(int rows, int columns);
 bool IsDimensionValid(int rows, int columns);
+int AddRowToField(Field* fieldPtr, int rowIndex, char* rowStr);
 
 #ifdef __cplusplus
 }

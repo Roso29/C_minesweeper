@@ -74,6 +74,9 @@ int main(void) {
             fieldPtr = GenerateField(rows, cols);
             fields[fieldCounter++] = fieldPtr;
         }
+        if(fieldCounter % 10 == 0){
+            fields = (Field**) realloc(fields, fieldCounter+10);
+        }
         
     }
 

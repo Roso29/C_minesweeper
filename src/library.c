@@ -4,11 +4,6 @@
 #include <stdio.h>
 #include <string.h>
 
-
-char *hello(void) {
-    return "Hello, World!";
-}
-
 bool IsDimensionValid(int rows, int columns){
     bool validDims = rows > 0 && rows <= 100 && columns > 0 && columns <= 100;
     return validDims;
@@ -40,7 +35,7 @@ bool IsRowDimsValid(Field* fieldPtr, int rowIndex, int rowLength){
 bool IsRowContentValid(char* rowString, int rowLength){
     bool isGoodCharacter = true;
     for(int charI = 0; charI<rowLength; charI++){
-        isGoodCharacter = rowString[charI]=='*' || rowString[charI] == '-';
+        isGoodCharacter = rowString[charI] == '*' || rowString[charI] == '-';
         if (!isGoodCharacter){
             return false;
         }
@@ -60,7 +55,7 @@ int AddRowToField(Field* fieldPtr, int rowIndex, char* rowStr){
     }
     char * rowAddr = fieldPtr->fieldArray[rowIndex];
     strncpy(rowAddr, rowStr, rowLength);
-    
+
     return 1;
 }  
 
@@ -115,6 +110,16 @@ void PrintField(Field* fieldPtr){
 
     for(int row=0;row < rows; row++){
         printf("%s\n",fieldArray[row]);
+    }
+}
+
+void PrintHints(Field* fieldPtr){
+    int rows = fieldPtr->rows;
+    int columns = fieldPtr->columns;
+    char** hintArray = fieldPtr->hintArray;
+
+    for(int row=0;row < rows; row++){
+        printf("%s\n",hintArray[row]);
     }
 
 }
